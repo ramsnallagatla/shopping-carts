@@ -4,7 +4,7 @@ pipeline{
 
 // uncomment the following lines by removing /* and */ to enable
     tools{
-       maven 'Maven 3.6.3' 
+       maven 'maven' 
     }
     
 
@@ -12,19 +12,19 @@ pipeline{
         stage('build'){
             steps{
                 echo 'this is the first job'
-                sh 'compile'
+                sh 'mvn compile'
             }
         }
         stage('test'){
             steps{
                 echo 'this is the second job'
-                sh 'clean test'
+                sh 'mvn clean test'
             }
         }
         stage('three'){
             steps{
                 echo 'this is the third job'
-                sh 'package'
+                sh 'mvn package -DskipTests'
             }
         }
     }
